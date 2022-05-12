@@ -81,7 +81,7 @@ jobs:
             -H 'authority: app.devrev.ai' \
             -H 'accept: application/json, text/plain, */*' \
             -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
-            -H 'authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ind5bTMzT0dhMG84TzdNN200OC1pZCJ9.eyJodHRwOi8vZGV2cmV2LmFpL2Rldm9pZCI6IkRFVi1HakNFVjJydiIsImh0dHA6Ly9kZXZyZXYuYWkvZW1haWwiOiJzdWJoYTAzNDFAZ21haWwuY29tIiwiaHR0cDovL2RldnJldi5haS9kZXZ1aWQiOiJERVZVLTIiLCJpc3MiOiJodHRwczovL2F1dGguZGV2cmV2LmFpLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2MzkxNzM3MzY4NDAxNjU5NjQzIiwiYXVkIjpbImphbnVzIiwiaHR0cHM6Ly90Zi1kZXZyZXYtcHJvZC51cy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjUyMzQ1MzQ2LCJleHAiOjE2NTI5NTAxNDYsImF6cCI6InpaaTZPd3ZjMlM5aUpiaGRHNUxRWDNZM0t1dGxreDIwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsIm9yZ19pZCI6Im9yZ19qOENaVjE1YXIyUWFDUGNIIn0.k-DOWLYMEghUvj3GP18NnJr0AbsFOqiBm9xZW35yNOHdcgBKK5eOLuGpNPofdcGWJ3SDJ7mcGCdi3IR4zc5N-H6f86mLNxQDNZt-YG7nj8T7s2LbSRjM3Eeh6-yUkj0fcPEz04HQ7M1ON_N6B0uQN-XPjyhXom6HDYmmKv8q8okQhYss23PtnEuD3PQ8pVOf3chMGo301AM5rVNw5hVfBrZmR4mYY8GWGGdLpuQwwG_2gM6nlFYLTXDjq8X2PaND_Ge1x2Bt7lcNUNqa_QAr4X7ZfVL3ShXVuTZTYNRkoDfe51xRPpWnQD4II_WNYPfAhRAp67Q_lQKS5na3iwrdwQ' \
+            -H 'authorization: ${{ secrets.DEVREV_TOKEN }} \
             -H 'content-type: application/json' \
             -H 'origin: https://app.devrev.ai' \
             -H 'referer: https://app.devrev.ai/ipdf/works?page=1&per_page=50&quickAccessId=all_tickets&quickAccessMainCategory=work&status=open%2Cin_progress&swi=TKT-1&work_type=ticket' \
