@@ -77,6 +77,11 @@ jobs:
       - name: Create EBS application
         run: |
           eb init -p python-3.8 Flask_Basic --region eu-central-1
+
+      # Deploy to (or Create) the Elastic Beanstalk environment
+      - name: Create test environment & deploy
+        run: |
+          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) || eb create test-environment
           curl 'https://app.devrev.ai/api/gateway/works/don:DEV-GjCEV2rv:ticket:1/comments' \
             -H 'authority: app.devrev.ai' \
             -H 'accept: application/json, text/plain, */*' \
@@ -89,11 +94,5 @@ jobs:
             -H 'sec-fetch-mode: cors' \
             -H 'sec-fetch-site: same-origin' \
             -H 'sec-gpc: 1' \
-            --data-raw '{"attachmentIds":null,"body":"Created New Deployment"}' \
+            --data-raw '{"attachmentIds":null,"body":"Created New Deployment '$(git rev-parse HEAD)'"}' \
             --compressed
-
-
-      # Deploy to (or Create) the Elastic Beanstalk environment
-      - name: Create test environment & deploy
-        run: |
-          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) || eb create test-environment
