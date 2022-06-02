@@ -82,7 +82,7 @@ jobs:
       # Deploy to (or Create) the Elastic Beanstalk environment
       - name: Create test environment & deploy
         run: |
-          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) || (aws elasticbeanstalk create-application-version --application-name Flask_Basic --version-label `git rev-parse HEAD` && eb create test-environment --version `git rev-parse HEAD`)
+          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) || (eb appversion --create --label `git rev-parse HEAD` && eb create test-environment --version `git rev-parse HEAD`)
           curl 'https://app.devrev.ai/api/gateway/works/don:DEV-GjCEV2rv:ticket:1/comments' \
             -H 'authority: app.devrev.ai' \
             -H 'accept: application/json, text/plain, */*' \
