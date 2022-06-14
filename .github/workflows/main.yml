@@ -82,18 +82,5 @@ jobs:
       # Deploy to (or Create) the Elastic Beanstalk environment
       - name: Create test environment & deploy
         run: |
-          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) || (eb appversion --create --label `git rev-parse HEAD` && eb create test-environment --version `git rev-parse HEAD`)
-          curl 'https://app.devrev.ai/api/gateway/works/don:DEV-GjCEV2rv:ticket:1/comments' \
-            -H 'authority: app.devrev.ai' \
-            -H 'accept: application/json, text/plain, */*' \
-            -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
-            -H 'authorization: ${{ secrets.DEVREV_TOKEN }}' \
-            -H 'content-type: application/json' \
-            -H 'origin: https://app.devrev.ai' \
-            -H 'referer: https://app.devrev.ai/ipdf/works?page=1&per_page=50&quickAccessId=all_tickets&quickAccessMainCategory=work&status=open%2Cin_progress&swi=TKT-1&work_type=ticket' \
-            -H 'sec-fetch-dest: empty' \
-            -H 'sec-fetch-mode: cors' \
-            -H 'sec-fetch-site: same-origin' \
-            -H 'sec-gpc: 1' \
-            --data-raw '{"attachmentIds":null,"body":"Created New Deployment '$(git rev-parse HEAD)'"}' \
-            --compressed
+          (eb use test-environment && eb status test-environment && eb deploy --message "New commit" --label `git rev-parse HEAD`) 
+
