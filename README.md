@@ -1,3 +1,3 @@
 # template-flask-app
 
-## This is a template application which will be hosted in aws beanstalk. Change 0
+## This is a template application which will be hosted in aws beanstalk. Change 1
