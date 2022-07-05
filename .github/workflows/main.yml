@@ -75,8 +75,8 @@ jobs:
       - name: Create EBS application
         run: |
           eb init -p python-3.8 Flask_Basic --region eu-central-1
-          echo "${{ github.sha }}"
+          echo "ver-${{ github.sha }}"
       # Deploy to (or Create) the Elastic Beanstalk environment
       - name: Create test environment & deploy
         run: |
-          (eb use test-environment && eb status test-environment && eb deploy --message "`git log -1 --pretty=%B`" --label "ver-${{ github.sha }}" || (eb appversion --create --label "ver-${{ github.sha }}" --message "`git log -1 --pretty=%B`" && eb create test-environment --version `git rev-parse HEAD`)
+          (eb use test-environment && eb status test-environment && eb deploy --message "`git log -1 --pretty=%B`" --label "ver-${{ github.sha }}" || (eb appversion --create --label "ver-${{ github.sha }}" --message "`git log -1 --pretty=%B`" && eb create test-environment --version "ver-${{ github.sha }}")
