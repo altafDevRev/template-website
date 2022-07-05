@@ -79,4 +79,4 @@ jobs:
       # Deploy to (or Create) the Elastic Beanstalk environment
       - name: Create test environment & deploy
         run: |
-          (eb use test-environment && eb status test-environment && eb deploy --message "`git log -1 --pretty=%B`" --label `git rev-parse HEAD`) || (eb appversion --create --label `git rev-parse HEAD` --message "`git log -1 --pretty=%B`" && eb create test-environment --version `git rev-parse HEAD`)
+          (eb use test-environment && eb status test-environment && eb deploy --message "`git log -1 --pretty=%B`" --label "ver-${{ github-sha }}" || (eb appversion --create --label "ver-${{ github-sha }}" --message "`git log -1 --pretty=%B`" && eb create test-environment --version `git rev-parse HEAD`)
